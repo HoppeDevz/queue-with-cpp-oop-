@@ -56,15 +56,19 @@ void Queue::enqueue(int x) {
 
 int Queue::dequeue() {
 
+    no *aux;
     int returnVal;
     
     if (this->startPtr) {
 
         returnVal = this->startPtr->info;
 
-        startPtr = this->startPtr->prox;
+        aux = this->startPtr;
+        delete aux;
 
-        if (this->startPtr == NULL) this->finalPtr = NULL; 
+        this->startPtr = this->startPtr->prox;
+
+        if (this->startPtr == NULL) this->finalPtr = NULL;
     }
 
     return returnVal;
